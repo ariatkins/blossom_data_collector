@@ -1,0 +1,9 @@
+<li>
+  <span class="content">
+  	Temperature: <%= cup.temperature %> <br>
+  	Duration: <%= cup.duration %> <br>
+  </span>
+  <span class="timestamp">
+    Brewed <%= time_ago_in_words(cup.created_at) %> ago.
+  </span>
+</li>

@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121018221656) do
+ActiveRecord::Schema.define(:version => 20121018225918) do
+
+  create_table "cups", :force => true do |t|
+    t.string   "time"
+    t.integer  "temperature"
+    t.integer  "duration"
+    t.integer  "machine_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "cups", ["user_id", "machine_id", "created_at"], :name => "index_cups_on_user_id_and_machine_id_and_created_at"
 
   create_table "machines", :force => true do |t|
     t.string   "imp_id"
