@@ -5,7 +5,7 @@ class CupsController < ApplicationController
 	end
 
 	def create
-		@machine = Machine.find(1)
+		@machine = Machine.find(2)
 		data = params[:value].split(',')
 		@cup = @machine.cups.new(temperature: data[1], duration: data[3])
 		@cup.save
