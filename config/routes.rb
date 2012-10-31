@@ -1,7 +1,10 @@
 BlossomDataCollector::Application.routes.draw do
 
+  get "comments/create"
+
   resources :users
   resources :cups
+  resources :comments, only: [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/signup',  to: 'users#new'

@@ -10,12 +10,10 @@
 		<div class="span5">
 			<div>
 				<% @cup = Cup.find(cup.id) %>
-				@comments = @cup.comments.paginate(page: params[:page])
 				<% if @cup.comments.any? %>
-        			<%= render @comments %>
-      				<%= will_paginate @comments %>
-    			<% end %>
-
+        			<%= render @cup.comments %>
+        		<% end %>
+      			<%= render 'shared/comment_form' %>
 			</div>
 		</div>
 	</div>

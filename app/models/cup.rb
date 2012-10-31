@@ -6,5 +6,6 @@ class Cup < ActiveRecord::Base
   validates :machine_id, presence: true
 
   default_scope order: 'cups.created_at DESC'
+  accepts_nested_attributes_for :comments
 
 end

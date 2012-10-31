@@ -1,7 +1,9 @@
-<%= form_for(@comment) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <aside class="textarea">
-    <%= f.text_area :contents, rows: "3", placeholder: "Write a new comment..." %>
-  </aside>
-  <%= f.submit "Save", class: "btn btn-medium btn-primary" %>
+<%= form_for(@cup) do |f| %>
+	<% @comment = @cup.comments.new %>
+	<%= f.fields_for @comment do |comment_form| %>
+		<aside class="textarea">
+			<%= comment_form.text_area :content, rows: "3", placeholder: "Write a new comment..." %>
+		</aside>
+	<% end %>
+	<%= f.submit "Save", class: "btn btn-medium btn-primary" %>
 <% end %>
