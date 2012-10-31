@@ -11,26 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121031165606) do
+ActiveRecord::Schema.define(:version => 20121031223635) do
 
   create_table "comments", :force => true do |t|
+    t.integer  "cup_id"
     t.string   "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "cup_id"
   end
 
   create_table "cups", :force => true do |t|
-    t.string   "time"
+    t.integer  "machine_id"
     t.integer  "temperature"
     t.integer  "duration"
-    t.integer  "machine_id"
-    t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
-
-  add_index "cups", ["user_id", "machine_id", "created_at"], :name => "index_cups_on_user_id_and_machine_id_and_created_at"
 
   create_table "machines", :force => true do |t|
     t.string   "imp_id"
@@ -51,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20121031165606) do
     t.boolean  "admin",           :default => false
   end
 
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end

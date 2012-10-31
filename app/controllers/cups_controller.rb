@@ -11,7 +11,7 @@ class CupsController < ApplicationController
 		data = params[:value].split(',')
 		@cup = @machine.cups.new(temperature: data[1], duration: data[3])
 		@cup.save
-		redirect_to @user
+		render :text=>"ok"
 	end
 
 	def update

@@ -10,7 +10,10 @@
 		<div class="span5">
 			<div>
 				<% @cup = Cup.find(cup.id) %>
-				
+				<% if @cup.comments.any? %>
+					<% @comments = @cup.comments %>
+					<%= render @comments %>
+				<% end %>
       			<%= render 'shared/comment_form' %>
 			</div>
 		</div>
