@@ -26,6 +26,7 @@ section {
 
 textarea {
   resize: vertical;
+  height: 10px;
 }
 
 .center {
@@ -197,6 +198,7 @@ input, textarea, select, .uneditable-input {
     border-top: 1px solid #e8e8e8;
   }
 }
+
 .temperature {
   display: block;
 }
@@ -209,7 +211,7 @@ input, textarea, select, .uneditable-input {
 }
 aside {
   textarea {
-    height: 100px;
+    height: 10px;
     margin-bottom: 5px;
   }
 }

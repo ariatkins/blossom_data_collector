@@ -1,0 +1,15 @@
+<% provide(:title, "Edit Comments") %> 
+<h1>Edit comments</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@cup) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :comments %>
+      <%= f.text_field :comments %>
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -8,6 +8,7 @@
       </h1>
     </section>
   </aside>
+  <div class="row">
   <div class="span8">
     <% if @user.cups.any? %>
       <h3>Cups (<%= @user.cups.count %>)</h3>
@@ -17,4 +18,5 @@
       <%= will_paginate @cups %>
     <% end %>
   </div>
+</div>
 </div>

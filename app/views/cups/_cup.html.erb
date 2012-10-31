@@ -1,7 +1,22 @@
 <li>
-  <span class="temperature">Temperature: <%= cup.temperature %></span>
-  <span class="temperature">Duration: <%= cup.duration %></span>
-  <span class="timestamp">
-    Brewed <%= time_ago_in_words(cup.created_at) %> ago.
-  </span>
+	<div class="row">
+		<div class="span3">
+			<span class="temperature">
+				<strong><%= cup.created_at %></strong>
+			</span>
+			<span class="temperature">Temperature: <%= cup.temperature %></span>
+			<span class="temperature">Duration: <%= cup.duration %></span>
+		</div>
+		<div class="span5">
+			<div>
+				<% @cup = Cup.find(cup.id) %>
+				@comments = @cup.comments.paginate(page: params[:page])
+				<% if @cup.comments.any? %>
+        			<%= render @comments %>
+      				<%= will_paginate @comments %>
+    			<% end %>
+
+			</div>
+		</div>
+	</div>
 </li>
