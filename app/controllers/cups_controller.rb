@@ -13,4 +13,14 @@ class CupsController < ApplicationController
 		@cup.save
 	end
 
+	def update
+		@cup = Cup.find(params[:id])
+		if @cup.update_attributes(params[:cup])
+			flash[:success] = "Comments added"
+			@user = @cup.machine.user
+			redirect_to @user
+		else
+		end
+	end
+
 end

@@ -7,7 +7,6 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'jquery-rails'
 gem 'execjs'
-gem 'therubyracer'
 
 group :development, :test do
   gem 'sqlite3'
