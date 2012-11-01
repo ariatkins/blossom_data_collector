@@ -2,7 +2,7 @@
 	<% @comment = @cup.comments.new %>
 	<%= f.fields_for @comment do |comment_form| %>
 		<aside class="textarea">
-			<%= comment_form.text_area :content, rows: "3", placeholder: "Write a new comment..." %>
+			<%= comment_form.text_area :content, rows: "2", placeholder: "Write a new comment..." %>
 		</aside>
 	<% end %>
 	<%= f.submit "Post Comment", class: "btn btn-medium btn-primary" %>

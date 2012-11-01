@@ -7,8 +7,8 @@ class CupsController < ApplicationController
 	end
 
 	def create
-		@machine = Machine.first
 		data = params[:value].split(',')
+		@machine = Machine.find_by_imp_id(imp_id = data[0])
 		@cup = @machine.cups.new(temperature: data[2], duration: data[4])
 		@cup.save
 		render :text=>"ok"
