@@ -1,23 +1,21 @@
-<% if cup.temperature != 0 %>
-	<li>
-		<div class="row">
-			<div class="span3">
-				<span class="temperature">
-					<strong><%= cup.created_at %></strong>
-				</span>
-				<span class="temperature">Temperature: <%= cup.temperature %></span>
-				<span class="temperature">Duration: <%= cup.duration %></span>
-			</div>
-			<div class="span5">
-				<div>
-					<% @cup = Cup.find(cup.id) %>
-					<% if @cup.comments.any? %>
-						<% @comments = @cup.comments %>
-						<%= render @comments %>
-					<% end %>
-	      			<%= render 'shared/comment_form' %>
-				</div>
+<li>
+	<div class="row">
+		<div class="span3">
+			<span class="temperature">
+				<strong><%= cup.created_at %></strong>
+			</span>
+			<span class="temperature">Temperature: <%= cup.temperature %></span>
+			<span class="temperature">Duration: <%= cup.duration %></span>
+		</div>
+		<div class="span5">
+			<div>
+				<% @cup = Cup.find(cup.id) %>
+				<% if @cup.comments.any? %>
+					<% @comments = @cup.comments %>
+					<%= render @comments %>
+				<% end %>
+      			<%= render 'shared/comment_form' %>
 			</div>
 		</div>
-	</li>
-<% end %>
+	</div>
+</li>

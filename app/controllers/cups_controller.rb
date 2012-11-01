@@ -14,11 +14,4 @@ class CupsController < ApplicationController
 		render :text=>"ok"
 	end
 
-	def update
-		@cup = Cup.find(params[:id])
-		@comment = @cup.comments.new(params[:cup][:comment])
-		@comment.save
-		redirect_to @cup.machine.user
-	end
-
 end
