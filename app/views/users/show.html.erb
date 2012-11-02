@@ -1,4 +1,23 @@
 <% provide(:title, @user.name) %>
+
+<% content_for :misc_js do %>
+<script type='text/javascript'>
+  $(document).ready(function(){  // this means 'run this when the page is done loading'
+    setInterval(function(){
+      $.get(  // perform an ajax 'get' request (see http://api.jquery.com/jQuery.get/)
+        'cups/poll', // this is the url to get
+        function(data) { // this is the function that is run with the returned data
+          $("#new_cups").prepend(data);  // find the element with id="all_cups" and add 'data' to the top of it.  'data' in this case should be an html fragment rendered by the cups/poll action
+          // alert('Load was performed.');  // you don't need this but it can help you debug.
+        }
+      );
+    }, 2000);  // setInterval says 'run this function every N milliseconds.'  first argument is the function, second argument is N.
+  });
+</script>
+
+
+<% end %>
+
 <div class="row">
   <aside class="span4">
     <section>
@@ -11,7 +30,8 @@
   <div class="row">
   <div class="span8">
     <% if @user.cups.any? %>
-      <h3>Cups (<%= @user.cups.count %>)</h3>
+      <h3>Cups</h3>
+      <ol class ="cups" id ="new_cups"></ol>
       <ol class="cups">
         <%= render @cups %>
       </ol>

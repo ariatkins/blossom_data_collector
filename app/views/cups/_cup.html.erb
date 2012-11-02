@@ -2,7 +2,15 @@
 	<div class="row">
 		<div class="span3">
 			<span class="temperature">
-				<strong><%= cup.created_at %></strong>
+				<% time = cup.created_at.in_time_zone('Pacific Time (US & Canada)') %>
+				<% timestring = time.month.to_s+"/"+time.day.to_s+" " %>
+				<% if time.hour > 12 %>
+					<% hour = time.hour - 12 %>
+					<% timestring = timestring + hour.to_s + ":" + time.min.to_s + " p.m." %>
+				<% else %>
+					<% timestring = timestring + time.hour.to_s + ":" + time.min.to_s + " a.m." %>
+				<% end %>
+				<strong><%= timestring %></strong>
 			</span>
 			<span class="temperature">Temperature: <%= cup.temperature %></span>
 			<span class="temperature">Duration: <%= cup.duration %></span>

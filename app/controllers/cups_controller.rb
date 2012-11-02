@@ -14,4 +14,13 @@ class CupsController < ApplicationController
 		render :text=>"ok"
 	end
 
+	def poll
+		@cup = Cup.last
+		if @cup.created_at > 3.seconds.ago
+			render @cup
+		else
+			render :nothing => true
+		end
+	end
+
 end
