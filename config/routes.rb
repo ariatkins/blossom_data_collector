@@ -5,7 +5,7 @@ BlossomDataCollector::Application.routes.draw do
   resources :users
   resources :cups
   resources :comments, only: [:create, :destroy]
-  resources :powerons, only: [:create]
+  resources :powerons
   # resources :sessions, only: [:new, :create, :destroy]
 
   # match '/signup',  to: 'users#new'
