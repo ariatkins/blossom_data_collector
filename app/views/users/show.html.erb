@@ -21,10 +21,11 @@
 <div class="row">
   <aside class="span4">
     <section>
+      <h1> <%= @user.name %> </h1>
       <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
+        <%= image_tag(@user.name + ".png", size: "150x150", alt: @user.name) %>
       </h1>
+
     </section>
   </aside>
   <div class="row">
