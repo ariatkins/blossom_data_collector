@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121101185354) do
+ActiveRecord::Schema.define(:version => 20121102170035) do
 
   create_table "comments", :force => true do |t|
     t.integer  "cup_id"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20121101185354) do
     t.datetime "updated_at",  :null => false
     t.string   "time"
     t.integer  "size"
+    t.string   "bean"
   end
 
   create_table "machines", :force => true do |t|
@@ -38,6 +39,13 @@ ActiveRecord::Schema.define(:version => 20121101185354) do
   end
 
   add_index "machines", ["user_id", "imp_id"], :name => "index_machines_on_user_id_and_imp_id"
+
+  create_table "powerons", :force => true do |t|
+    t.string   "machine_id"
+    t.string   "time"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

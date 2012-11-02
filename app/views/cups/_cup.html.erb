@@ -2,6 +2,9 @@
 	<div class="row">
 		<div class="span3">
 			<span class="temperature">
+				<strong><%= cup.bean %></strong>
+			</span>
+			<span class="temperature">
 				<% time = cup.created_at.in_time_zone('Pacific Time (US & Canada)') %>
 				<% timestring = "" %>
 				<% if time.hour > 12 %>
