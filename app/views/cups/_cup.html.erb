@@ -3,13 +3,24 @@
 		<div class="span3">
 			<span class="temperature">
 				<% time = cup.created_at.in_time_zone('Pacific Time (US & Canada)') %>
-				<% timestring = time.month.to_s+"/"+time.day.to_s+" " %>
+				<% timestring = "" %>
 				<% if time.hour > 12 %>
 					<% hour = time.hour - 12 %>
-					<% timestring = timestring + hour.to_s + ":" + time.min.to_s + " p.m." %>
+					<% timestring += hour.to_s + ":" %>
+					<% if time.min < 10 %>
+						<% timestring += "0" + time.min.to_s + " p.m." %>
+					<% else %>
+						<% timestring += time.min.to_s + " p.m." %>
+					<% end %>
 				<% else %>
-					<% timestring = timestring + time.hour.to_s + ":" + time.min.to_s + " a.m." %>
+					<% timestring += time.hour.to_s + ":" %>
+					<% if time.min < 10 %>
+						<% timestring += "0" + time.min.to_s + " a.m." %>
+					<% else %>
+						<% timestring += time.min.to_s + " a.m." %>
+					<% end %>
 				<% end %>
+				<% timestring += " on " + time.month.to_s+"/"+time.day.to_s+" " %>
 				<strong><%= timestring %></strong>
 			</span>
 			<span class="temperature">Temperature: <%= cup.temperature %></span>

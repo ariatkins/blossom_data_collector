@@ -15,12 +15,19 @@ class CupsController < ApplicationController
 	end
 
 	def poll
-		@cup = Cup.last
+		@cup = Cup.first
 		if @cup.created_at > 3.seconds.ago
 			render @cup
+
 		else
 			render :nothing => true
 		end
 	end
 
+	def update
+		@cup = Cup.find(params[:id])
+		@comment = @cup.comments.new(params[:cup][:comment])
+		@comment.save
+		redirect_to @cup.machine.user
+	end
 end
