@@ -1,33 +1,34 @@
 <li>
 	<div class="row">
 		<div class="span3">
+
+			<% if cup.bean? %>
+				<span class="temperature"><strong><%= cup.bean %></strong></span>
+			<% else %>
+        <span class="temperature">Bean: </span>
+      <% end %>
+
 			<span class="temperature">
-				<strong><%= cup.bean %></strong>
-			</span>
+        Roasted On: <%= cup.roast_date %>
+      </span>
+
 			<span class="temperature">
-				<% time = cup.created_at.in_time_zone('Pacific Time (US & Canada)') %>
-				<% timestring = "" %>
-				<% if time.hour > 12 %>
-					<% hour = time.hour - 12 %>
-					<% timestring += hour.to_s + ":" %>
-					<% if time.min < 10 %>
-						<% timestring += "0" + time.min.to_s + " p.m." %>
-					<% else %>
-						<% timestring += time.min.to_s + " p.m." %>
-					<% end %>
-				<% else %>
-					<% timestring += time.hour.to_s + ":" %>
-					<% if time.min < 10 %>
-						<% timestring += "0" + time.min.to_s + " a.m." %>
-					<% else %>
-						<% timestring += time.min.to_s + " a.m." %>
-					<% end %>
-				<% end %>
-				<% timestring += " on " + time.month.to_s+"/"+time.day.to_s+" " %>
-				<strong><%= timestring %></strong>
+        Dose: <%= cup.dose %>
+        <% if cup.dose %>
+          grams
+        <% end %>
+      </span>
+			<span class="temperature">Temperature: <%= cup.temperature %> Fahrenheit</span>
+			<span class="temperature">Duration: <%= cup.duration %> seconds</span>
+      <span class="temperature">Water Input: <%= cup.size %> grams</span>
+			<span class="temperature">Yield: <%= cup.yield %> grams</span>
+			<span class="timestamp">
+				<% timestring = to_time_string(cup.created_at) %>
+				<%= timestring %>
 			</span>
-			<span class="temperature">Temperature: <%= cup.temperature %></span>
-			<span class="temperature">Duration: <%= cup.duration %></span>
+      <br>
+      <br>
+      <a href=<%="#myModal"+cup.id.to_s %>  role="button" class="btn" data-toggle="modal">Edit</a>
 		</div>
 		<div class="span5">
 			<div>
@@ -41,3 +42,42 @@
 		</div>
 	</div>
 </li>
+
+
+<!-- Modal -->
+<div id= <%="myModal"+cup.id.to_s %> class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <%= form_for(cup) do |f| %>
+      <div class="row">
+        <div class ="span2">
+          <%= f.label :bean %>
+          <%= f.text_field :bean %>
+        </div>
+        <div class ="span2">
+          <%= f.label :roast_date %>
+          <%= f.text_field :roast_date %>
+        </div>
+        <div class ="span2">
+          <%= f.label :dose %>
+          <%= f.text_field :dose %>
+        </div>
+        <div class ="span2">
+          <%= f.label :grind_setting %>
+          <%= f.text_field :grind_setting %>
+        </div>
+        <div class ="span2">
+          <%= f.label :yield %>
+          <%= f.text_field :yield %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <%= f.submit "Save Changes", class: "btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

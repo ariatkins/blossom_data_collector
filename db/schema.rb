@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121102170035) do
+ActiveRecord::Schema.define(:version => 20121107201131) do
 
   create_table "comments", :force => true do |t|
     t.integer  "cup_id"
-    t.string   "content"
+    t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -24,11 +24,15 @@ ActiveRecord::Schema.define(:version => 20121102170035) do
     t.integer  "machine_id"
     t.integer  "temperature"
     t.integer  "duration"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "time"
     t.integer  "size"
     t.string   "bean"
+    t.string   "roast_date"
+    t.float    "dose"
+    t.float    "grind_setting"
+    t.float    "yield"
   end
 
   create_table "machines", :force => true do |t|

@@ -1,4 +1,4 @@
- <span class="content"><%= comment.content.gsub("/r/n", "<br>") %></span>
+ <span class="content"><%= simple_format(comment.content) %></span>
  <br>
  <span class="timestamp">
  	Posted <%= time_ago_in_words(comment.created_at) %> ago. </span>
