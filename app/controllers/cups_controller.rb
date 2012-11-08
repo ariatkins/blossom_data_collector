@@ -31,6 +31,7 @@ class CupsController < ApplicationController
 			end
 		else
 			if @cup.update_attributes(params[:cup])
+				@cup.save
 			end
 		end
 		redirect_to @cup.machine.user
