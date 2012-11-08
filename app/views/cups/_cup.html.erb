@@ -19,6 +19,10 @@
         <% end %>
       </span>
 
+      <span class="temperature">
+        Grind: <%= cup.grind_setting %>
+      </span>
+
 			<span class="temperature">Temperature: <%= cup.temperature %> Fahrenheit</span>
 
 			<span class="temperature">Duration: <%= cup.duration %> seconds</span>
@@ -39,7 +43,7 @@
 				<% timestring = to_time_string(cup.created_at) %>
 				<%= timestring %>
 			</span>
-      
+
       <br>
       <br>
       <a href=<%="#myModal"+cup.id.to_s %>  role="button" class="btn" data-toggle="modal">Edit</a>
