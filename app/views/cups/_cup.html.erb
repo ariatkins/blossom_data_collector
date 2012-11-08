@@ -18,14 +18,28 @@
           grams
         <% end %>
       </span>
+
 			<span class="temperature">Temperature: <%= cup.temperature %> Fahrenheit</span>
+
 			<span class="temperature">Duration: <%= cup.duration %> seconds</span>
-      <span class="temperature">Water Input: <%= cup.size %> grams</span>
-			<span class="temperature">Yield: <%= cup.yield %> grams</span>
+
+      <span class="temperature">Water Input: <%= cup.size %>
+        <% if cup.dose %>
+          grams
+        <% end %>
+      </span>
+      
+			<span class="temperature">Yield: <%= cup.yield %> 
+        <% if cup.dose %>
+          grams
+        <% end %>
+      </span>
+      
 			<span class="timestamp">
 				<% timestring = to_time_string(cup.created_at) %>
 				<%= timestring %>
 			</span>
+      
       <br>
       <br>
       <a href=<%="#myModal"+cup.id.to_s %>  role="button" class="btn" data-toggle="modal">Edit</a>
